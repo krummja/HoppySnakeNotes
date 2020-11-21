@@ -17,7 +17,9 @@ There are a few major changes we can make to the code to make it much more reada
 -   All indentation should be equivalent to 4 spaces. The indents in your code are 3 spaces.
 -   There should be a space between `#` and the comment string following.
 
+``` python
     # this is a formatted comment 
+```
 
 -   There should be two spaces preceding a `#` following code.
 
@@ -25,13 +27,14 @@ There are a few major changes we can make to the code to make it much more reada
 
 -   Surround top-level function and class definitions with two blank lines.
 
+``` python
     def some_function():
         # some business code
-    
-    
+
+
     class SomeClass:
         # some class definitions
-
+```
 
 <a id="org8125033"></a>
 
