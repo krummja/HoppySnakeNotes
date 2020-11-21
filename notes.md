@@ -23,7 +23,9 @@ There are a few major changes we can make to the code to make it much more reada
 
 -   There should be two spaces preceding a `#` following code.
 
+``` python
     print("Hello, world!")  # this is a comment following code
+```
 
 -   Surround top-level function and class definitions with two blank lines.
 
