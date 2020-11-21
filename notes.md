@@ -46,29 +46,36 @@ There are a few major antipatterns in your code that you want to try to avoid. T
 
 In the context of your code, you can declare these "global" variables as local to the `main()` function and then pass them in. Better yet, you can make a class that represents the game instance, and keep those important variables in the scope of that instance instead.
 
+``` python
     class Game:
         """Contains all of the core game logic."""
     
         def __init__(self):
     	self.score = 0
     	self.running = False    
+```
 
 It is generally a good idea to make your variable names semantically transparent. A variable like `p1` or `ao` doesn't tell us anything about what they represent. Instead, use things like `player` or `active_objects`.
 
+``` python
     player = Player(x=-200, y=0, canvas=window)
+```
 
 Note as well that I've passed in arguments to the `Player` class as keyword arguments. This is the more Pythonic way of doing things, but it's not strictly required.
 
 For the sake of making the code more readable, you also want to avoid variables that mirror the name of the classes they're contained in. For example, it is not entirely clear what `Player.player` is meant to represent. What it appears to be referring to is actually the graphical component of the player, so we can change this to something like `Player.sprite` and make it much clearer.
 
+``` python
     class Player:
     
         def __init__(self, x, y, canvas):
     	# ...
     	self.sprite = turtle.RawTurtle(canvas)
+```
 
 When defining a variable, there is no need to create a local variable and then assign that variable to a class property:
 
+``` python
     class OtherClass:
     
         def __init__(self, x):
@@ -79,11 +86,13 @@ When defining a variable, there is no need to create a local variable and then a
     
         def __init__(self):
     	self.other = OtherClass(10)
+```
 
 I would recommend making some of these functions that you have in the global namespace into members of a class instead. In the following, I will show how I would approach the design of this program, with commentary as necessary.
 
 Your initial setup is basically fine. I would just make the variable name for the game window more explicit. I will also be opting to encapsulate the entire game inside of a class to put everything in a safer scope.
 
+``` python
     import random
     import turtle
     import time
@@ -95,4 +104,4 @@ Your initial setup is basically fine. I would just make the variable name for th
     	self.window.tracer(0)
     	self.score = 0
     	self.running = False
-
+```
