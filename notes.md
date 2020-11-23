@@ -51,8 +51,8 @@ In the context of your code, you can declare these "global" variables as local t
         """Contains all of the core game logic."""
     
         def __init__(self):
-    	self.score = 0
-    	self.running = False    
+    	    self.score = 0
+    	    self.running = False    
 ```
 
 It is generally a good idea to make your variable names semantically transparent. A variable like `p1` or `ao` doesn't tell us anything about what they represent. Instead, use things like `player` or `active_objects`.
@@ -69,8 +69,8 @@ For the sake of making the code more readable, you also want to avoid variables 
     class Player:
     
         def __init__(self, x, y, canvas):
-    	# ...
-    	self.sprite = turtle.RawTurtle(canvas)
+    	    # ...
+    	    self.sprite = turtle.RawTurtle(canvas)
 ```
 
 When defining a variable, there is no need to create a local variable and then assign that variable to a class property:
@@ -79,13 +79,13 @@ When defining a variable, there is no need to create a local variable and then a
     class OtherClass:
     
         def __init__(self, x):
-    	self.x = x
+    	    self.x = x
     
     
     class SomeClass:
     
         def __init__(self):
-    	self.other = OtherClass(10)
+    	    self.other = OtherClass(10)
 ```
 
 I would recommend making some of these functions that you have in the global namespace into members of a class instead. In the following, I will show how I would approach the design of this program, with commentary as necessary.
@@ -100,8 +100,8 @@ Your initial setup is basically fine. I would just make the variable name for th
     
     class Game:
         def __init__(self):
-    	self.window = turtle.Screen()
-    	self.window.tracer(0)
-    	self.score = 0
-    	self.running = False
+    	    self.window = turtle.Screen()
+    	    self.window.tracer(0)
+    	    self.score = 0
+    	    self.running = False
 ```
