@@ -39,6 +39,7 @@ class Player:
 
 
 class Ground:
+    """Sprite representing the ground - a straight line."""
 
     def __init__(self, ground_level, canvas):
         self.sprite = turtle.RawTurtle(canvas)
@@ -50,6 +51,7 @@ class Ground:
 
 
 class Obstacle:
+    """A basic sprite representing an obstacle that will kill the player."""
 
     def __init__(self, x, y, canvas):
         self.sprite = turtle.RawTurtle(canvas)
@@ -115,8 +117,7 @@ class Stage:
 
     def spawn_obstacle(self):
         since_last = 1.0
-        # spawn_chance = random.randrange(0, 100)
-        roll = random.randrange(0, 1000)  # ** (2 * len(self.obstacles))
+        roll = random.randrange(0, 1000)
         if roll + (0.0002 * since_last) > 995:
             new_obstacle = Obstacle(500, 0, self.game.window)
             self.obstacles.append(new_obstacle)
